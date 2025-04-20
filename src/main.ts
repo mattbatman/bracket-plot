@@ -1,144 +1,6 @@
 import * as Plot from "@observablehq/plot";
 import data from "../data/bracket.json";
 
-function indent() {
-  return (root: any) => {
-    root.eachBefore((node: any, i: any) => {
-      node.y = node.depth;
-      node.x = i;
-    });
-  };
-}
-
-const bracket = [
-  {
-    team: "Connecticut",
-    path: "Connecticut",
-  },
-  {
-    path: "Connecticut|Connecticut",
-    team: "Connecticut",
-  },
-  {
-    path: "Connecticut|Illinois",
-    team: "Illinois",
-  },
-  {
-    path: "Connecticut|Connecticut|Connecticut",
-    team: "Connecticut",
-  },
-  {
-    path: "Connecticut|Connecticut|San Diego St",
-    team: "San Diego St",
-  },
-  {
-    path: "Connecticut|Illinois|Illinois",
-    team: "Illinois",
-  },
-  {
-    path: "Connecticut|Illinois|Iowa St",
-    team: "Iowa St",
-  },
-  /*
-  {
-    path: "Connecticut|Connecticut|Connecticut",
-    team: "Connecticut",
-  },
-  {
-    path: "Connecticut|Connecticut|Northwestern",
-    team: "Northwestern",
-  },
-  {
-    path: "Connecticut|Connecticut|San Diego St|San Diego St",
-    team: "San Diego St",
-  },
-  {
-    path: "Connecticut|Connecticut|San Diego St|Yale",
-    team: "Yale",
-  },
-  {
-    path: "Connecticut|Illinois|Illinois|Illinois",
-    team: "Illinois",
-  },
-  {
-    path: "Connecticut|Illinois|Illinois|Duquesne",
-    team: "Duquesne",
-  },
-  {
-    path: "Connecticut|Illinois|Iowa St|Iowa St",
-    team: "Iowa St",
-  },
-  {
-    path: "Connecticut|Illinois|Iowa St|Washington St",
-    team: "Washington St",
-  },
-  {
-    path: "Connecticut|Connecticut|Connecticut|Connecticut",
-    team: "Connecticut",
-  },
-  {
-    path: "Connecticut|Connecticut|Connecticut|Stetson",
-    team: "Stetson",
-  },
-  {
-    path: "Connecticut|Connecticut|Northwestern|Northwestern",
-    team: "Northwestern",
-  },
-  {
-    path: "Connecticut|Connecticut|Northwestern|FL Atlantic",
-    team: "FL Atlantic",
-  },
-  {
-    path: "Connecticut|Connecticut|San Diego St|San Diego St|San Diego St",
-    team: "San Diego St",
-  },
-  {
-    path: "Connecticut|Connecticut|San Diego St|San Diego St|UAB",
-    team: "UAB",
-  },
-  {
-    path: "Connecticut|Connecticut|San Diego St|Yale|Yale",
-    team: "Yale",
-  },
-  {
-    path: "Connecticut|Connecticut|San Diego St|Yale|Auburn",
-    team: "Auburn",
-  },
-  {
-    path: "Connecticut|Illinois|Illinois|Duquesne|Duquesne",
-    team: "Duquesne",
-  },
-  {
-    path: "Connecticut|Illinois|Illinois|Duquesne|BYU",
-    team: "BYU",
-  },
-  {
-    path: "Connecticut|Illinois|Illinois|Illinois|Illinois",
-    team: "Illinois",
-  },
-  {
-    path: "Connecticut|Illinois|Illinois|Illinois|Morehead St",
-    team: "Morehead St",
-  },
-  {
-    path: "Connecticut|Illinois|Iowa St|Iowa St|Iowa St",
-    team: "Iowa St",
-  },
-  {
-    path: "Connecticut|Illinois|Iowa St|Iowa St|S Dakota St",
-    team: "S Dakota St",
-  },
-  {
-    path: "Connecticut|Illinois|Iowa St|Washington St|Washington St",
-    team: "Washington St",
-  },
-  {
-    path: "Connecticut|Illinois|Iowa St|Washington St|Drake",
-    team: "Drake",
-  },
-  */
-];
-
 const div = document.querySelector("#app");
 
 const groupedByConference = data.reduce(function (acc, cv) {
@@ -281,19 +143,15 @@ nodes.push({
   path: champion,
 });
 
-console.log(nodes);
-
 const plot = Plot.plot({
   axis: null,
-  inset: 10,
-  insetRight: 120,
+  inset: 120,
   round: true,
   width: 800,
   height: 600,
   marks: Plot.tree(nodes, {
     path: "path",
     delimiter: "|",
-    //    treeLayout: indent,
     strokeWidth: 1,
     curve: "step-before",
     textStroke: "none",
